@@ -17,11 +17,19 @@ const contactsController = new ContactsController(db);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               first_name:
+ *                 type: string
+ *               last_name:
+ *                 type: string
+ *               business:
  *                 type: string
  *               email:
  *                 type: string
+ *               phone_type:
+ *                 type: string
  *               phone:
+ *                 type: string
+ *               website:
  *                 type: string
  *     responses:
  *       201:
