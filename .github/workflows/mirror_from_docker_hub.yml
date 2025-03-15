@@ -1,9 +1,6 @@
 name: Mirror Docker Images
 
 on:
-  push:
-    branches:
-      - develop
   workflow_dispatch:
     inputs:
       force_mirror:
