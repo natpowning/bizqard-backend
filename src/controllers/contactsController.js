@@ -69,4 +69,4 @@ class ContactsController {
     }
 }
 
-export default ContactsController;
+module.exports = ContactsController;
