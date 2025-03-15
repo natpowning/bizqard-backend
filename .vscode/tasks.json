@@ -1,0 +1,23 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "start db",
+            "type": "shell",
+            "command": "docker compose up -d db",
+            "problemMatcher": []
+        },
+        {
+            "label": "npm: install",
+            "type": "shell",
+            "command": "npm install",
+            "problemMatcher": []
+        },
+        {
+            "label": "preLaunch",
+            "dependsOrder": "sequence",
+            "dependsOn": ["npm: install", "start db"],
+            "problemMatcher": []
+        }
+    ]
+}

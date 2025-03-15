@@ -8,7 +8,7 @@
             "skipFiles": ["<node_internals>/**"],
             "program": "${workspaceFolder}/src/app.js",
             "envFile": "${workspaceFolder}/.env",
-            "preLaunchTask": "docker-compose: up db"
+            "preLaunchTask": "preLaunch"
         }
     ]
 }
