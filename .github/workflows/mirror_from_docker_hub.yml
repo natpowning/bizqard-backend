@@ -1,0 +1,51 @@
+name: Mirror Docker Images
+
+on:
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+    inputs:
+      force_mirror:
+        description: 'Force mirror all images'
+        required: false
+        default: 'false'
+
+jobs:
+  mirror-images:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install Skopeo
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y skopeo
+
+      - name: Set repository name in lowercase
+        run: echo "REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
+      - name: Define image tags
+        id: tags
+        run: |
+          echo "::set-output name=list::postgres:13"
+      
+      - name: Mirror images
+        run: |
+          read -ra images <<< "${{ steps.tags.outputs.list }}"
+          for image in "${images[@]}"
+          do
+            IFS=":" read -r name tag <<< "$image"
+            target="ghcr.io/${{ env.REPO_NAME }}/${name}:${tag}"
+            if [ "${{ github.event.inputs.force_mirror }}" == "true" ] || ! skopeo inspect --creds "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" "docker://${target}" &>/dev/null; then
+              echo "Mirroring $image to $target"
+              skopeo copy --all --dest-creds "${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}" "docker://${image}" "docker://${target}"
+            else
+              echo "$target already exists"
+            fi
+          done
