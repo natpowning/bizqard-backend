@@ -102,9 +102,6 @@ dist
 # TernJS port file
 .tern-port
 
-# VS Code directories
-.vscode/
-
 # SvelteKit build / generate output
 .svelte-kit
 
