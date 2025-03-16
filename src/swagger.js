@@ -5,7 +5,7 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'test bizqard-backend API',
+      title: 'bizqard-backend API',
       version: '1.0.0',
       description: 'API documentation for bizqard-backend',
     },
