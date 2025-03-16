@@ -6,5 +6,6 @@
   "features": {
     "ghcr.io/audacioustux/devcontainers/localstack:1": {},
     "ghcr.io/localstack/devcontainer-feature/localstack-cli:0": {}
-  }
+  },
+  "postCreateCommand": "code --install-extension ms-playwright.playwright"
 }
