@@ -1,8 +1,14 @@
 {
 	"name": "BizQard Codespace (Default)",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
+//	"build": {
+//		"dockerfile": "Dockerfile"
+//	},
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint"]
+    }
+  },
   "features": {
     "ghcr.io/audacioustux/devcontainers/localstack:1": {},
     "ghcr.io/localstack/devcontainer-feature/localstack-cli:0": {}
