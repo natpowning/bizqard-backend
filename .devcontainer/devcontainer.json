@@ -6,12 +6,18 @@
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "customizations": {
     "vscode": {
-      "extensions": ["dbaeumer.vscode-eslint"]
+      "extensions": [
+        "ms-playwright.playwright",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "ms-vscode.vscode-typescript-next",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "dbaeumer.vscode-eslint"
+      ]
     }
   },
   "features": {
     "ghcr.io/audacioustux/devcontainers/localstack:1": {},
     "ghcr.io/localstack/devcontainer-feature/localstack-cli:0": {}
-  },
-  "postCreateCommand": "code --install-extension ms-playwright.playwright"
+  }
 }
